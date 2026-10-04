@@ -1,0 +1,10 @@
+{
+  "name": "sangtian-repair-study",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Practice-led motherboard repair learning notes and knowledge base",
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "test": "node scripts/check.cjs"
+  }
+}

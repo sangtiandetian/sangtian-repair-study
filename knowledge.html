@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0d5d58">
+  <link rel="icon" href="data:,">
+  <title>知识库 · 桑田学维修</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="study.css">
+</head>
+<body>
+  <div class="topline"></div>
+  <div class="wrap">
+    <header class="site-top">
+      <a class="site-brand" href="index.html">桑田学维修</a>
+      <nav class="site-nav" aria-label="网站导航"><a href="index.html#lesson">接着学</a><a href="knowledge.html" aria-current="page">知识库</a><a href="boards.html">主板档案</a></nav>
+    </header>
+    <section class="knowledge-head" aria-labelledby="knowledgeTitle">
+      <div><h1 id="knowledgeTitle">学习知识库</h1><p id="knowledgeCount">实测、推理与复盘</p></div>
+      <div class="knowledge-tools"><label for="knowledgeSearch">搜索标题、信号、读数或故障</label><input id="knowledgeSearch" type="search" placeholder="例如：PS_ON、3.05、冷启动" autocomplete="off"></div>
+    </section>
+    <div class="category-tabs" role="group" aria-label="记录分类" id="categoryTabs"></div>
+    <div class="knowledge-layout">
+      <aside><div class="record-list" id="recordList" aria-label="知识库记录"></div></aside>
+      <main id="reader" aria-live="polite">
+        <div class="reader-toolbar"><span id="recordCategory"></span><a id="recordDownload" download>下载原始记录</a></div>
+        <div class="reader-source" id="recordSource"></div>
+        <article class="markdown" id="recordContent"></article>
+        <section class="reader-media" id="recordMedia" hidden aria-label="实拍证据"></section>
+      </main>
+    </div>
+    <footer class="site-foot">事实先记录，结论带依据。没有验证的内容保持待验证。</footer>
+  </div>
+  <dialog class="media-dialog" id="mediaDialog" aria-labelledby="mediaCaption"><button class="close" id="closeMedia" type="button" aria-label="关闭大图">×</button><figure><img id="mediaFull" alt=""><figcaption id="mediaCaption"></figcaption></figure></dialog>
+  <script src="vendor/marked.umd.js"></script>
+  <script src="data/study-data.js"></script>
+  <script src="knowledge.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{
+  "updated": "2026-10-04",
+  "currentLevel": 1,
+  "acceptedLevels": [],
+  "repairGoal": 10,
+  "independentRepairs": [],
+  "baseline": {
+    "board": "MD-006",
+    "model": "ASUS H61M-E REV 2.02",
+    "cpu": "Intel Core i3-2120T",
+    "memory": "单条 4 GB DDR3-1333，DIMM_A1",
+    "psu": "Enermax MODU82+ EMD425AWT · 425 W",
+    "record": "h61-baseline",
+    "measurements": [
+      {"point": "CR2032 电池", "state": "未接 ATX，电池在位", "value": "3.05 V"},
+      {"point": "5VSB", "state": "ATX 待机，未触发", "value": "5.14 V"},
+      {"point": "PS_ON#", "state": "待机 → 触发后稳定运行", "value": "3.59 → 0.03 V"},
+      {"point": "+12 V / +5 V / +3.3 V", "state": "触发后稳定运行", "value": "12.13 / 5.00 / 3.36 V"},
+      {"point": "PWR_OK", "state": "触发后稳定运行", "value": "5.08 V"},
+      {"point": "POST / BIOS", "state": "i3-2120T 最小系统", "value": "进入 BIOS 0601"}
+    ],
+    "voltageMethod": "胜利 VC890D · 直流 20 V 档 · 黑表笔接后置接口金属外壳",
+    "pending": ["基础测量理解验收", "3 次冷启动记录", "板载供电区域识别与第一组输出测量"]
+  },
+  "resume": {
+    "title": "先补理解验收，不重做已有测量",
+    "intro": "电池、ATX 待机与启动链、POST 和 BIOS 都已有证据。课程仍处于第 1 关待验收，不代表从零开始。",
+    "questions": [
+      {"title": "先回答这一问", "question": "测主板纽扣电池时，为什么用直流电压档，而不能用电阻档？", "intent": "能分清测电压与测电阻的用途，并知道电池仍是一个电源。"},
+      {"title": "之后再核定：插孔与量程", "question": "你的 VC890D 测 3.05 V 时，红黑表笔各插哪个孔、旋钮选哪档？", "intent": "能独立选档，不把电流插孔当作测电压的插孔。"},
+      {"title": "之后再核定：参考地与读数", "question": "黑表笔为什么接已确认的主板地？如果屏幕显示负号或数值低，先核对什么？", "intent": "能解释参考点、极性与测量结果，不把异常读数直接当作操作失败。"}
+    ],
+    "next": "验收后继续实践 001：完成 3 次冷启动，随后进入第 2 关元件识别。内存电感输出测量作为后续供电练习，由教练先核对实物测点。",
+    "preparation": {"required": "MD-006、i3-2120T 与散热器、已知正常内存和 ATX 电源、显示器及匹配视频线、开机按钮、万用表、稳定照明", "optional": "蜂鸣器、照片补充", "later": "POST 卡在第 4 关前准备；CH341A 第 8 关可选；焊接套装与练习板第 10 关前准备。"},
+    "stop": "发生火花、异味、异常发热或测点不确定，立即停止；不拆 ATX 电源，不做市电测量，不带电插拔。"
+  },
+  "evidence": [
+    {"date": "2026-09-15", "title": "实践 000 · 设备与练习板建档", "status": "已完成建档", "detail": "7 块主板、工具与原始照片已整理；建档完成不计作修复主板。", "doc": "equipment"},
+    {"date": "2026-09-15—18", "title": "实践 001 · H61 正常基准", "status": "实测已记录，实践未结项", "detail": "电池 3.05 V；5VSB 5.14 V；PS_ON# 拉低；三路主输出与 PWR_OK；进入 BIOS。重复冷启动和板载供电测量待补。", "doc": "h61-baseline"},
+    {"date": "2026-09-18", "title": "知识卡 · 5VSB 与 PS_ON#", "status": "已验证一次", "detail": "保留待机与运行对照；第二块板上的独立复现尚未完成。", "doc": "atx-signals"}
+  ],
+  "chapters": [
+    {"id": 1, "title": "主板维修预备知识", "pages": [1, 24], "levels": [1, 14], "evidence": "equipment"},
+    {"id": 2, "title": "工具与常用元器件", "pages": [25, 100], "levels": [1, 2, 3, 10, 11, 12], "evidence": "h61-baseline"},
+    {"id": 3, "title": "看懂主板电路图", "pages": [101, 118], "levels": [13]},
+    {"id": 4, "title": "开机电路", "pages": [119, 148], "levels": [4, 16], "evidence": "atx-signals"},
+    {"id": 5, "title": "供电电路", "pages": [149, 222], "levels": [5, 17, 18, 19], "evidence": "h61-baseline"},
+    {"id": 6, "title": "时钟电路", "pages": [223, 238], "levels": [6]},
+    {"id": 7, "title": "复位电路", "pages": [239, 258], "levels": [7]},
+    {"id": 8, "title": "CMOS 与 BIOS 电路", "pages": [259, 286], "levels": [8], "evidence": "h61-baseline"},
+    {"id": 9, "title": "接口电路", "pages": [287, 334], "levels": [9]},
+    {"id": 10, "title": "总线插槽与测试点", "pages": [335, 378], "levels": [14]},
+    {"id": 11, "title": "常见故障维修", "pages": [379, 390], "levels": [16, 17, 18, 19], "evidence": "h61-baseline"},
+    {"id": 12, "title": "品牌通病与维修经验", "pages": [391, 398], "levels": [15]},
+    {"id": 13, "title": "主板维修实战", "pages": [399, 434], "levels": [16, 17, 18, 19]}
+  ]
+}
